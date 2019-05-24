@@ -1,0 +1,10 @@
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\bin\Debug\Gauge Block File Writer.exe.config
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\bin\Debug\Gauge Block File Writer.exe
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\bin\Debug\Gauge Block File Writer.pdb
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge_Block_File_Writer.Properties.Resources.resources
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge Block File Writer.csproj.GenerateResource.Cache
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge Block File Writer.csproj.CoreCompileInputs.cache
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge Block File Writer.exe
+c:\users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge Block File Writer.pdb
+C:\Users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge_Block_File_Writer.FileWriterForm.resources
+C:\Users\c.young\source\repos\Gauge Block File Writer\Gauge Block File Writer\obj\Debug\Gauge Block File Writer.csprojResolveAssemblyReference.cache
