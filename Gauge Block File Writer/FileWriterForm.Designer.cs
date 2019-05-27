@@ -63,7 +63,6 @@
             this.CroppedRichTextBox = new System.Windows.Forms.RichTextBox();
             this.CroppedImageListlabel = new System.Windows.Forms.Label();
             this.WriteTextFileButton = new System.Windows.Forms.Button();
-            this.OutputCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfGaugesUpDown)).BeginInit();
             this.gaugeBlockGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThermExpUpDown)).BeginInit();
@@ -666,22 +665,11 @@
             this.WriteTextFileButton.UseVisualStyleBackColor = true;
             this.WriteTextFileButton.Click += new System.EventHandler(this.WriteTextFileButton_Click);
             // 
-            // OutputCheckBox
-            // 
-            this.OutputCheckBox.AutoSize = true;
-            this.OutputCheckBox.Location = new System.Drawing.Point(1602, 906);
-            this.OutputCheckBox.Name = "OutputCheckBox";
-            this.OutputCheckBox.Size = new System.Drawing.Size(201, 17);
-            this.OutputCheckBox.TabIndex = 26;
-            this.OutputCheckBox.Text = "Output both platen temp and air temp";
-            this.OutputCheckBox.UseVisualStyleBackColor = true;
-            // 
             // FileWriterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1850, 1008);
-            this.Controls.Add(this.OutputCheckBox);
             this.Controls.Add(this.WriteTextFileButton);
             this.Controls.Add(this.CroppedImageListlabel);
             this.Controls.Add(this.CroppedRichTextBox);
@@ -746,7 +734,6 @@
         private System.Windows.Forms.Label Sidelabel7;
         private System.Windows.Forms.ComboBox SideComboBox;
         private System.Windows.Forms.Button WriteTextFileButton;
-        private System.Windows.Forms.CheckBox OutputCheckBox;
     }
 }
 
