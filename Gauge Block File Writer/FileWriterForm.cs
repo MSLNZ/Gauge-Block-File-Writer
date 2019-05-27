@@ -24,6 +24,7 @@ namespace Gauge_Block_File_Writer
         Rectangle rectCropArea;
         private int gi = 0;
         bool current_red = true;
+        bool single_colour = false;
         string cropped_file_path = "";
         string client_name = "";
         private bool called_from_metric;
@@ -209,12 +210,14 @@ namespace Gauge_Block_File_Writer
                     }
                     else if (GaugeImage.Number == GaugeBlock.NumGauges)
                     {
+                        single_colour = true;
                         //we either have all red or all green images, but not both
                         if (!GaugeImage.CheckSingleColourImages()) MessageBox.Show("An Image was detected which was not the correct colour");
                         return;
                     }
                     else if (GaugeImage.Number == GaugeBlock.NumGauges * 2)
                     {
+                        single_colour = false;
                         if (!GaugeImage.CheckGreenRed()) MessageBox.Show("Images in the file are not sequenced correctly");
                     }
                 }
@@ -572,13 +575,18 @@ namespace Gauge_Block_File_Writer
                 string p_green = gauge.PGreen.ToString();
                 string h_red = gauge.HRed.ToString();
                 string h_green = gauge.HGreen.ToString();
-                string position = "0";
                 string red_file = cropped_file_path + "\\" + gauge.RedCropped.Filename.ToString();
                 string green_file = cropped_file_path + "\\" + gauge.GreenCropped.Filename.ToString();
-                if(OutputCheckBox.Checked) writer.WriteLine(size + "," + serial_number + "," + date_red + "," + date_green + "," + client_name + "," + platen + "," + observer + "," + side + "," + thermexp + "," + units + "," + t_red + "," + t_green + "," + t_red_platen + "," + t_green_platen + "," + p_red + "," + p_green + "," + h_red + "," + h_green + "," + position + "," + red_file + "," + green_file);
-                else writer.WriteLine(size + "," + serial_number + "," + date_red + "," + date_green + "," + client_name + "," + platen + "," + observer + "," + side + "," + thermexp + "," + units  + "," + t_red_platen + "," + t_green_platen + "," + p_red + "," + p_green + "," + h_red + "," + h_green + "," + position + "," + red_file + "," + green_file);
+                if (single_colour)
+                {
+                    if(GaugeImage.SetColour == GaugeColor.Red) writer.WriteLine(size + "," + serial_number + "," + date_red + "," + client_name + "," + platen + "," + observer + "," + side + "," + thermexp + "," + units + "," + t_red + "," + t_red_platen + "," + p_red + "," + h_red + "," + red_file);
+                    else writer.WriteLine(size + "," + serial_number + "," + date_green + "," + client_name + "," + platen + "," + observer + "," + side + "," + thermexp + "," + units + "," + t_green + "," + t_green_platen + "," + p_green + "," + h_green + "," + green_file);
+                }
+                else writer.WriteLine(size + "," + serial_number + "," + date_red + "," + date_green + "," + client_name + "," + platen + "," + observer + "," + side + "," + thermexp + "," + units + "," + t_red + "," + t_green + "," + t_red_platen + "," + t_green_platen + "," + p_red + "," + p_green + "," + h_red + "," + h_green + "," + red_file + "," + green_file);
             }
             writer.Close();
         }
+
+     
     }
 }
