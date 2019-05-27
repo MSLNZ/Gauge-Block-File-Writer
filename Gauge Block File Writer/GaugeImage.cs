@@ -38,6 +38,7 @@ namespace Gauge_Block_File_Writer
         DateTime d;
         string filename="";
         private GaugeColor clr;
+        private static GaugeColor set_clr = GaugeColor.Red;
         
         
         
@@ -64,6 +65,11 @@ namespace Gauge_Block_File_Writer
         {
             get { return current_image; }
             set { current_image = value; }
+        }
+
+        public static GaugeColor SetColour
+        {
+            get { return set_clr; }
         }
        
         public Color GetDominantColor()
@@ -177,6 +183,7 @@ namespace Gauge_Block_File_Writer
                     gauge.RedDate = GaugeImages[j].DateT;
                     GaugeImages[j].Colour = GaugeColor.Red;
                     gauge.CalculateTPH();
+                    set_clr = GaugeColor.Red;
                     j++;
                 }
                 else if (clr.G >= clr.B && clr.G > clr.R && (colour == GaugeColor.Green || colour == GaugeColor.Undefined))
@@ -191,6 +198,7 @@ namespace Gauge_Block_File_Writer
                     gauge.GreenDate = GaugeImages[j].DateT;
                     GaugeImages[j].Colour = GaugeColor.Green;
                     gauge.CalculateTPH();
+                    set_clr = GaugeColor.Green;
                     j++;
                 }
                 else
