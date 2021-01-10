@@ -495,7 +495,15 @@ namespace Gauge_Block_File_Writer
                     }
                 }
             }
-            if (CroppedRichTextBox.Lines.Count() == numberOfGaugesUpDown.Value) WriteTextFileButton.Enabled = true;
+            if (single_colour)
+            {
+                if (CroppedRichTextBox.Lines.Count() >= numberOfGaugesUpDown.Value) WriteTextFileButton.Enabled = true;
+            }
+            else
+            {
+                if (CroppedRichTextBox.Lines.Count() >= numberOfGaugesUpDown.Value*2) WriteTextFileButton.Enabled = true;
+            }
+            
         }
 
         private void LoadSourceImage_Click(object sender, EventArgs e)
@@ -555,7 +563,9 @@ namespace Gauge_Block_File_Writer
             foreach(GaugeBlock gauge in GaugeBlock.Gauges)
             {
                 if (gauge == null) break;
-                string size = (gauge.Size/25.4).ToString();
+                string size = "";
+                if(Metric.Checked) size = (gauge.Size).ToString();
+                else size = (gauge.Size/25.4).ToString();
                 string serial_number = "na";
                 string date_red = gauge.RedDate.ToOADate().ToString();
                 string date_green = gauge.GreenDate.ToOADate().ToString();
