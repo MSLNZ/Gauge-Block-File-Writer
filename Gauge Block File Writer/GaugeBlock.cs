@@ -208,10 +208,10 @@ namespace Gauge_Block_File_Writer
             {
 
                 case EnviroParam.Temperature:
-                    path_r = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Hilger air .txt";
-                    path_g = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Hilger air .txt";
-                    path_r_platen = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Hilger platen 1.txt";
-                    path_g_platen = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Hilger platen 1.txt";
+                    path_r = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Air in Beam Path .txt";
+                    path_g = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Air in Beam Path .txt";
+                    path_r_platen = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Hilger platen.txt";
+                    path_g_platen = "I:\\MSL\\Private\\LENGTH\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Hilger platen.txt";
                     paths = new string[4] { path_r, path_g, path_r_platen, path_g_platen };
                     break;
                 case EnviroParam.Pressure:
@@ -229,6 +229,7 @@ namespace Gauge_Block_File_Writer
                     break;
             }
             StreamReader reader;
+            FileStream fs;
             if (paths == null) return false;
             int w = 0;
             foreach (string path in paths)
@@ -236,11 +237,11 @@ namespace Gauge_Block_File_Writer
                 w++; //for w == 1 or 3 the image is red, for w == 2 or 4 the image is green.
                 try
                 {
-                    //if the file exists append to it otherwise create a new file
+                    //check if the file path exists.
                     if (System.IO.File.Exists(path))
                     {
-                        
-                        using (reader = new StreamReader(path))
+                        fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                        using (reader = new StreamReader(fs))
                         {
                             string line;
                             string line1;
@@ -302,7 +303,7 @@ namespace Gauge_Block_File_Writer
                                     }
                                     if (first_comp <= 0 && second_comp >= 0)
                                     {
-                                        //the value we want is in between these two date value.
+                                        //the value we want is in between these two date values.
                                         TimeSpan span1;
                                         TimeSpan span2;
                                         if ((w == 1) || (w == 3))
