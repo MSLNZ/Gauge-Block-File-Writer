@@ -173,6 +173,10 @@
             "1.48",
             "1.49",
             "1.5",
+            "1.6",
+            "1.7",
+            "1.8",
+            "1.9",
             "2",
             "2.5",
             "3",
@@ -225,6 +229,7 @@
             "50",
             "60",
             "70",
+            "75",
             "80",
             "90",
             "100"});
@@ -332,7 +337,7 @@
             "2",
             "3",
             "4"});
-            this.ImperialComboBox.Location = new System.Drawing.Point(14, 185);
+            this.ImperialComboBox.Location = new System.Drawing.Point(15, 185);
             this.ImperialComboBox.Name = "ImperialComboBox";
             this.ImperialComboBox.Size = new System.Drawing.Size(96, 21);
             this.ImperialComboBox.TabIndex = 4;
