@@ -34,15 +34,13 @@ namespace Gauge_Block_File_Writer
         private static Image current_image;
         private static int image_index = -1;
         private static int crop_index = -1;
+        private static ChangeProgressBar progress_bar_state;
         Image gauge_image;
         DateTime d;
         string filename="";
         private GaugeColor clr;
         private static GaugeColor set_clr = GaugeColor.Red;
-        
-        
-        
-        public GaugeImage(Image img,bool cropped)
+        public GaugeImage(Image img, bool cropped)
         {
             if (!cropped)
             {
@@ -58,7 +56,13 @@ namespace Gauge_Block_File_Writer
                 Array.Resize(ref cropped_images, crop_index + 1);
                 cropped_images[crop_index] = this;
             }
+
             
+        }
+
+        public static void setPBar(ref ChangeProgressBar cpb)
+        {
+            progress_bar_state = cpb;
         }
 
         public static Image CurrentImage
@@ -104,12 +108,16 @@ namespace Gauge_Block_File_Writer
             }
 
             int avgB = totals[0] / (width * height);
-            int avgG = totals[1] / (width * height);
-            int avgR = totals[2] / (width * height);
+            //int avgG = totals[1] / (width * height);
+            //int avgR = totals[2] / (width * height);
+            int avgG = 0;
+            int avgR = 0;
+            if (totals[1] < totals[2]) avgR = 10;
+            else avgG = 10;
 
             bmp.UnlockBits(srcData);
 
-            return Color.FromArgb(avgR, avgG, avgB);
+            return Color.FromArgb(avgR, avgG, 0);
         }
 
         public DateTime DateT
@@ -163,10 +171,23 @@ namespace Gauge_Block_File_Writer
 
         public static bool CheckSingleColourImages()
         {
+
+            bool vis = true;
+            int progress = 0;
+            int cnt = GaugeBlock.Gauges.Count();
+
             int j = 0;
             GaugeColor colour = GaugeColor.Undefined;
             foreach (GaugeBlock gauge in GaugeBlock.Gauges)
             {
+                progress++;
+
+                if (progress == cnt)
+                {
+                    vis = false;
+                }
+                if (progress <= cnt) progress_bar_state(progress, vis);
+
                 if (gauge == null) break;//the last gauge in the list is empty
 
                 //check to see if the image is red
@@ -213,6 +234,10 @@ namespace Gauge_Block_File_Writer
 
         public static bool CheckGreenRed()
         {
+            int progress = 0;
+            int cnt = GaugeImage.Number;
+            bool vis = true;
+
             //In this case we should have both green and red images and we can assume that we have either 
             //1) taken images as red/green/red/green/red/green ....... 
             //2) or green/red/green/red/green/red .......  
@@ -223,13 +248,20 @@ namespace Gauge_Block_File_Writer
             //The code below attempts to figure this out.
             int j = 0;
             int k = 1;
-            
 
             //first assume an alternating pattern (options 1 to 4, bail out if this pattern is not detected)
             try
             {
                 foreach (GaugeBlock gauge in GaugeBlock.Gauges)
                 {
+
+                    progress++;
+                    if (progress == cnt)
+                    {
+                        vis = false;
+                    }
+                    if(progress*2 <= cnt) progress_bar_state(progress*2, vis);
+                    
                     if (gauge == null) break;
                     //check to see if the image is red
                     Color clrj = GaugeImages[j].GetDominantColor();
@@ -285,6 +317,10 @@ namespace Gauge_Block_File_Writer
             }
             catch (NotAlternatingImagesException)
             {
+                progress = 0;
+                cnt = GaugeImage.Number;
+                vis = true;
+
                 //the pattern wasn't alternating pattern
                 //now we assume the pattern is all red images first and then all green images or visa versa
                 try
@@ -293,6 +329,13 @@ namespace Gauge_Block_File_Writer
                     k = GaugeImage.Number / 2;
                     foreach (GaugeBlock gauge in GaugeBlock.Gauges)
                     {
+                        progress++;
+                        if (progress == cnt)
+                        {
+                            vis = false;
+                        }
+                        if (progress * 2 <= cnt) progress_bar_state(progress * 2, vis);
+
                         if (gauge == null) break;
                         //check to see if the image is red
                         Color clrj = GaugeImage.GaugeImages[j].GetDominantColor();
