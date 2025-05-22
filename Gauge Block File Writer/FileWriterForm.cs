@@ -195,7 +195,7 @@ namespace Gauge_Block_File_Writer
             {
                 string uncropped_file_path = "";
                 //fbd.RootFolder = Environment.SpecialFolder.MyComputer;
-                fbd.SelectedPath = @"C:\Users\c.young\OneDrive - Callaghan Innovation\Jobs";
+                fbd.SelectedPath = @"L:\Jobs";
 
                 DialogResult result = fbd.ShowDialog();
 
@@ -250,7 +250,7 @@ namespace Gauge_Block_File_Writer
                     if (ext.Contains(a))
                     {
                         //we have found a valid picture file
-                        Image image = Image.FromFile(filename);
+                        Bitmap image = new Bitmap(Image.FromFile(filename));
                         GaugeImage gi = new GaugeImage(image, false);
                         if (set == false)
                         {
@@ -696,7 +696,7 @@ namespace Gauge_Block_File_Writer
             Thread proc_picture_info;
             using (var ofd = new OpenFileDialog())
             {
-                ofd.InitialDirectory = @"C:\Users\c.young\OneDrive - Callaghan Innovation\Jobs";
+                ofd.InitialDirectory = @"L:\Jobs";
 
                 DialogResult result = ofd.ShowDialog();
 

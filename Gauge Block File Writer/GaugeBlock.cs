@@ -208,20 +208,20 @@ namespace Gauge_Block_File_Writer
             {
 
                 case EnviroParam.Temperature:
-                    path_r = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Air in Beam Path .txt";
-                    path_g = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Air in Beam Path .txt";
-                    path_r_platen = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Hilger platen.txt";
-                    path_g_platen = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Hilger platen.txt";
+                    path_r = "L:\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Air in Beam Path .txt";
+                    path_g = "L:\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Air in Beam Path .txt";
+                    path_r_platen = "L:\\Temperature Monitoring Data\\Hilger Lab\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "Hilger platen.txt";
+                    path_g_platen = "L:\\Temperature Monitoring Data\\Hilger Lab\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "Hilger platen.txt";
                     paths = new string[4] { path_r, path_g, path_r_platen, path_g_platen };
                     break;
                 case EnviroParam.Pressure:
-                    path_r = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Pressure Monitoring Data\\Ground_floor_at_1m_height\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "MSLE.L.105.txt";
-                    path_g = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Pressure Monitoring Data\\Ground_floor_at_1m_height\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "MSLE.L.105.txt";
+                    path_r = "L:\\Pressure Monitoring Data\\Ground_floor_at_1m_height\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "MSLE.L.105.txt";
+                    path_g = "L:\\Pressure Monitoring Data\\Ground_floor_at_1m_height\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "MSLE.L.105.txt";
                     paths = new string[2] { path_r, path_g };
                     break;
                 case EnviroParam.Humidity:
-                    path_r = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Humidity Monitoring Data\\HILGERLAB\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "MSLE.L.105.txt";
-                    path_g = "C:\\Users\\c.young\\OneDrive - Callaghan Innovation\\Humidity Monitoring Data\\HILGERLAB\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "MSLE.L.105.txt";
+                    path_r = "L:\\Humidity Monitoring Data\\HILGERLAB\\" + year_r.ToString() + "\\" + year_r.ToString() + "-" + month_r.ToString() + "\\" + "MSLE.L.105.txt";
+                    path_g = "L:\\Humidity Monitoring Data\\HILGERLAB\\" + year_g.ToString() + "\\" + year_g.ToString() + "-" + month_g.ToString() + "\\" + "MSLE.L.105.txt";
                     paths = new string[2] { path_r, path_g };
                     break;
                 default:
